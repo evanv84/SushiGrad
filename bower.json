@@ -1,0 +1,21 @@
+{
+  "name": "SushiGrad.rf",
+  "description": "Sushi Delivery",
+  "main": "",
+  "keywords": [
+    "sushi",
+    "delivery"
+  ],
+  "authors": [
+    "i.i."
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,908 @@
+@import "susy";
+@import "breakpoint";
+
+//variables
+@import "variables";
+
+//mixins
+@import "mixins";
+
+//partials
+@import "buttons";
+@import "nav";
+
+//fonts
+@import "fonts";
+
+//Susy settings
+$susy: (
+  columns: 12,
+  gutter-position: inside,
+  gutters: 0,
+  math: fluid,
+  output: float,
+);
+
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Optima Cyr', 'Helvetica', sans-serif;
+	-ms-overflow-x: hidden;
+	    overflow-x: hidden;
+}
+
+h1, h2, h3, p {
+	font-weight: normal;
+}
+
+h2 {
+	text-transform: uppercase;
+	line-height: 1.3;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0.1); 
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background: $darkred; 
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4); 
+}
+
+
+section {
+	position: relative;
+	
+	&:before {
+		clear: both;
+	}
+}
+
+.container {
+	@include container(80%);
+}
+
+.home-header {
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background-color: $black;
+	
+	.bcg {
+	    overflow: hidden;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    -webkit-perspective: 1000px;
+	    perspective: 1000px;
+	    
+	    div {
+	    	background: url(../img/header-bg.jpg) no-repeat;
+	    	@include bgs(cover);
+	    	width: 100%;
+	    	height: 100vh;
+    	    background-position: 50%!important;
+	    }
+	}
+
+	.bcg-dark {
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		background-color: $black;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.main-content {
+		opacity: 0;
+		@include transform(translateY(30px));
+	}
+	
+	.container {
+		padding-top: 15vh;
+		text-align: center;
+		
+		img {
+			height: 20vh;
+			margin-bottom: 1rem;
+		}
+
+		h1 {
+			color: #FFF;
+			text-transform: uppercase;
+			font-size: 2rem;
+			font-family: 'Poiret One', sans-serif;
+			margin-bottom: 0;
+			margin-top: 0;
+			line-height: 1;
+			@include breakpoint($phone) {
+				font-size: 1.5rem;
+			}
+			
+			span {
+				color: $red;
+				text-transform: none;
+				font-size: 3.1rem;
+				@include breakpoint($phone) {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+
+	.mouse
+	{
+	    position: absolute;
+	    right: 0;
+	    bottom: 30px;
+	    left: 0;
+
+	    display: block;
+
+	    box-sizing: border-box;
+	    width: 22px;
+	    height: 40px;
+	    margin: 50px auto 0;
+
+	    border: 1px solid white;
+	    border-radius: 11px;
+
+	    .whell
+	    {
+	        display: block;
+
+	        width: 4px;
+	        height: 4px;
+	        margin: 10px auto 0;
+
+	        border-radius: 4px;
+	        background: white;
+	    }
+
+	    .scroll
+	    {
+	        display: block;
+
+	        margin: 2px auto 0;
+
+	        animation: scroll 1.5s infinite;
+
+	        &:before,
+	        &:after
+	        {
+	            display: block;
+
+	            width: 4px;
+	            height: 4px;
+	            margin: auto;
+
+	            content: '';
+	            transform: rotate(45deg);
+
+	            border-right: 1px solid white;
+	            border-bottom: 1px solid white;
+	        }
+	    }
+	}
+
+	@keyframes scroll
+	{
+	    0%
+	    {
+	        transform: translateY(0);
+
+	        opacity: 0;
+	    }
+	    30%
+	    {
+	        opacity: 1;
+	    }
+	    60%
+	    {
+	        transform: translateY(4px);
+
+	        opacity: 0;
+	    }
+	    100%
+	    {
+	        opacity: 0;
+	    }
+	}
+}
+
+.shop-header {
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+	background-color: $black;
+	
+	.bcg {
+	    overflow: hidden;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 400px;
+	    -webkit-perspective: 1000px;
+	    perspective: 1000px;
+	    
+	    div {
+	    	background: url(../img/shop-header-bg.jpg) center center no-repeat;
+	    	@include bgs(cover);
+	    	width: 100%;
+	    	height: 400px;
+    	    background-position: 50%!important;
+	    }
+	}
+
+	.bcg-dark {
+		position: absolute;
+		width: 100%;
+		height: 400px;
+		top: 0;
+		left: 0;
+		background-color: $black;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	h1 {
+		padding-top: 1rem;
+	}
+}
+
+#details {
+	width: 100%;
+	height: 1700px;
+	background: url(../img/section-bg.jpg) bottom center no-repeat;
+	@include bgs(cover);
+	padding: 120px 0;
+	
+	&:before {
+		content: "";
+		background: url(../img/cook-title-left.svg) center center no-repeat;
+		@include bgs(contain);
+		width: 50px;
+		height: 250px;
+		position: absolute;
+		left: 2%;
+		top: 500px;
+		@include breakpoint($tablet) {
+			display: none;
+		}
+	}
+	
+	&:after {
+		content: "";
+		background: url(../img/delivery-title-right.svg) center center no-repeat;
+		@include bgs(contain);
+		width: 50px;
+		height: 250px;
+		position: absolute;
+		right: 2%;
+		top: 1000px;
+		@include breakpoint($tablet) {
+			display: none;
+		}
+	}
+
+	.container {
+		position: relative;
+		color: #FFF;
+
+		.content-one {
+			padding-top: 50px;
+			&:before {
+				content: "";
+				background: url(../img/wave.svg) center center no-repeat;
+				@include bgs(contain);
+				width: 100px;
+				height: 50px;
+				position: absolute;
+				left: 0;
+				top: -50px;
+			}
+
+			.cook-img {
+				width: 80%;
+				height: 500px;
+				background: url(../img/cook-foto.jpg) center center no-repeat;
+				@include bgs(cover);
+				position: relative;
+				@include breakpoint($phone) {
+					@include span(12);
+					position: static;
+				}
+				
+				&:before {
+					content: "";
+					background: url(../img/cook-img.svg) center center no-repeat;
+					@include bgs(contain);
+					width: 280px;
+					height: 200px;
+					position: absolute;
+					right: -30%;
+					top: 20px;
+					z-index: 15;
+					@include breakpoint($phone) {
+						display: none;
+					}
+				}
+			}
+
+			.cook-desc {
+				display: inline-block;
+				padding: 3rem;
+				width: 40%;
+				height: 400px;
+				position: absolute;
+				right: 5%;
+				top: 220px;
+				overflow: hidden;
+				@include breakpoint($phone) {
+					position: static;
+					@include span(12);
+					padding: 1rem;
+				}
+				
+				.bcg {
+					background: url(../img/description-bg.jpg) bottom center no-repeat;
+					@include bgs(cover);
+					width: 100%;
+					height: 600px;
+					position: absolute;
+					top: -100px;
+					left: 0;
+					z-index: 10;
+				}
+
+				.text {
+					position: relative;
+					z-index: 11;
+				}
+			}
+		}
+
+		.content-two {
+			padding-top: 150px;
+			position: relative;
+			&:before {
+				content: "";
+				background: url(../img/sticks-img.svg) center center no-repeat;
+				@include bgs(contain);
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				left: 30%;
+				top: 50px;
+				@include breakpoint($phone) {
+					display: none;
+				}
+			}
+
+			.delivery-img {
+				width: 80%;
+				height: 500px;
+				background: url(../img/delivery-foto.jpg) center center no-repeat;
+				@include bgs(cover);
+				position: relative;
+				left: 10%;
+				top: 100px;
+				@include breakpoint($phone) {
+					@include span(12);
+					position: static;
+				}
+				&:before {
+					content: "";
+					background: url(../img/delivery-img.svg) center center no-repeat;
+					@include bgs(contain);
+					width: 280px;
+					height: 200px;
+					position: absolute;
+					right: 5%;
+					top: 400px;
+					z-index: 15;
+					@include breakpoint($phone) {
+						display: none;
+					}
+				}
+			}
+
+			.delivery-desc {
+				display: inline-block;
+				padding: 3rem;
+				width: 40%;
+				min-height: 300px;
+				position: absolute;
+				left: 30%;
+				top: 400px;
+				overflow: hidden;
+				@include breakpoint($phone) {
+					@include span(12);
+					position: static;
+					padding: 1rem;
+				}
+				
+				.bcg {
+					background: url(../img/description-bg.jpg) center center no-repeat;
+					@include bgs(cover);
+					width: 100%;
+					height: 500px;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 10;
+				}
+
+				.text {
+					position: relative;
+					z-index: 11;
+				}
+			}
+		}		
+
+	}
+}
+
+#actions {
+	padding: 0 0 200px;
+	
+	.container {
+		position: relative;
+		
+		#actions-title {
+			width: 40%;
+			position: absolute;
+			top: -50px;
+			@include breakpoint($phone) {
+				@include span(12);
+				position: static;
+			}
+		}
+
+		#actionSlider {
+			width: 100%;
+			height: 500px;
+			position: relative;
+			top: 90px;
+			@include breakpoint($phone) {
+				@include span(12);
+				position: static;
+			}
+			
+			.slide1 {
+				background: url(../img/action-bg-1.jpg) center center no-repeat;
+				@include bgs(cover);
+				width: 100%;
+				height: 500px;
+				
+			}
+
+			.text {
+				background: url(../img/actions-text-bg.jpg) center center no-repeat;
+				@include bgs(cover);
+				display: inline-block;
+				padding: 2rem;
+				width: 50%;
+				min-height: 200px;
+				position: absolute;
+				right: 5%;
+				top: 100px;
+				color: #FFF;
+				@include breakpoint($phone) {
+					width: 85%;
+					position: static;
+					padding: 1rem;
+					margin-top: 3rem;
+				}
+			}
+		}
+
+	}
+}
+
+#feedback {
+	background-color: lighten($black, 95);
+	padding-top: 80px;
+	#feedback-title {
+		position: absolute;
+		width: 40%;
+		top: -50px;
+		right: 5%;
+		@include breakpoint($phone) {
+			position: static;
+			width: 100%;
+		}
+	}
+	.container {
+		position: relative;
+		.row {
+			clear: both;
+			//margin-bottom: 2rem;
+		}
+		
+		.col-fb {
+			@include span(4);
+			margin-bottom: 2rem;
+			@include breakpoint($phone) {
+				@include span(12);
+			}
+			
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+#shop-content {
+	padding: 40px 0 100px;
+	
+	.filters {
+		padding: 1rem;
+		width: 100%;
+		border: 1px solid darken($lightgray, 20);
+		@include span(3 first);
+		@include breakpoint($tablet) {
+			@include span(12);
+			margin-bottom: 2rem;
+		}
+	}
+
+	.shop-inner {
+		padding: 0 0 0 2rem;
+		@include span(9 last);
+		@include breakpoint($tablet) {
+			@include span(12);
+			padding: 0;
+		}
+	}
+}
+
+footer {
+	margin-top: 100px;
+	padding: 80px 0;
+	background: url(../img/footer-bg.jpg) top center no-repeat;
+	@include bgs(cover);
+	height: 600px;
+	border-bottom: 8px solid $darkred;
+	position: relative;
+	@include breakpoint($phone) {
+		height: auto;
+	}
+	
+	.container {
+		position: relative;
+		
+		#map {
+			position: absolute;
+			top: -170px;
+			width: 80%;
+			height: 400px;
+			z-index: 50;
+			@include breakpoint($phone) {
+				position: static;
+				width: 100%;
+			}
+		}
+		
+		.terms {
+			background: url(../img/description-bg.jpg) center center no-repeat;
+			@include bgs(cover);
+			display: inline-block;
+			padding: 2rem;
+			width: 35%;
+			min-height: 200px;
+			position: absolute;
+			right: -5%;
+			top: -50px;
+			overflow: hidden;
+			color: #FFF;
+			z-index: 51;
+			@include breakpoint($phone) {
+				position: static;
+				width: 100%;
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
+	.container-bottom {
+		position: absolute;
+		bottom: 0;
+		width: 80%;
+		left: 10%;
+		@include breakpoint($phone) {
+			position: static;
+		}
+		
+		.logo {
+			@include span(4 first);
+			margin-bottom: 2rem;
+			@include breakpoint($phone) {
+				@include span(12);
+				text-align: center;
+			}
+			
+			img {
+				width: 200px;
+			}
+		}
+
+		.socials {
+			@include span(4);
+			text-align: center;
+			padding-top: 1rem;
+			@include breakpoint($phone) {
+				@include span(12);
+				text-align: center;
+			}
+			
+			a {
+				color: #FFF;
+				font-size: 2rem;
+				margin-right: 1rem;
+				@include transition(0.5s);
+				
+				&:hover {
+					color: $red;
+					@include transition(0.5s);
+				}
+			}
+
+			a:last-child {
+				margin-right: 0;
+			}
+		}
+
+		.contacts {
+			@include span(4 last);
+			text-align: right;
+			padding-top: 1.5rem;
+			@include breakpoint($phone) {
+				@include span(12);
+				text-align: center;
+			}
+			
+			a {
+				color: #FFF;
+				text-decoration: none;
+				
+				
+				span {
+					color: $red;
+				}
+			}
+		}
+	}
+}
+
+.bottom-bar {
+	position: fixed;
+	width: 100%;
+	background-color: $black;
+	bottom: 0;
+	left: 0;
+	padding: 7px 0;
+	z-index: 5000;
+	display: none;
+	@include breakpoint($tablet) {
+		display: block;
+	}
+
+	.container {
+		@include container(100%);
+	}
+
+	a {
+		color: #FFF;
+		text-decoration: none;
+		
+		
+		span {
+			color: $red;
+		}
+	}
+
+	.phone {
+		@include span(6 first);
+		@include breakpoint($tablet) {
+			padding-left: 30px;
+		}
+		@include breakpoint($phone) {
+			padding-left: 15px;
+		}
+	}
+
+	.cart {
+		@include span(6 last);
+		text-align: right;
+		@include breakpoint($tablet) {
+			padding-right: 30px;
+		}
+		@include breakpoint($phone) {
+			padding-right: 15px;
+		}
+	}
+}
+
+.remodal {
+	background: url(../img/modal-bg.jpg) center center no-repeat;
+	@include bgs(cover);
+	border-bottom: 3px solid $darkred;
+	@include breakpoint($phone) {
+		background-position: left;
+	} 
+
+	.remodal-close {
+		top: -50px;
+		left: 710px;
+		opacity: 0.7;
+		@include transition(0.6s);
+		@include breakpoint($phone) {
+			left: 0;
+			top: 0;
+		}
+
+		&:hover {
+			@include transition(0.6s);
+			@include transform(rotate(180deg) scale(1.2));
+			@include transform-origin(50% 50%);
+			opacity: 1;
+		}
+	}
+
+	.remodal-close:before {
+		display: none;
+	}
+
+	.remodal-close span:nth-child(1) {
+		position: absolute;
+		top: 16px;
+		left: -2px;
+		height: 2px;
+		width: 40px;
+		background-color: $white;
+		@include transform(rotate(45deg));
+		@include breakpoint($phone) {
+			background-color: $red;
+		} 
+	}
+
+	.remodal-close span:nth-child(2) {
+		position: absolute;
+		top: 16px;
+		left: -2px;
+		height: 2px;
+		width: 40px;
+		background-color: $white;
+		@include transform(rotate(135deg));
+		@include breakpoint($phone) {
+			background-color: $red;
+		} 
+	}
+
+	.remodal-close:hover span:nth-child(1), .remodal-close:hover span:nth-child(2) {
+		background-color: $red;
+		@include transition(0.5s);
+	}
+}
+
+.text-modal {
+	max-width: 60%;
+	text-align: left;
+	@include breakpoint($phone) {
+		max-width: 100%;
+	} 
+
+	h4 {
+		font-weight: 300;
+		font-size: 1.1rem;
+		margin-top: 0;
+	}
+}
+
+.law {
+	max-width: 60%;
+	text-align: left;
+	@include breakpoint($phone) {
+		max-width: 100%;
+	} 
+
+	p {
+		font-weight: 300;
+		font-size: 0.8rem;
+		margin-top: 2rem;
+		margin-bottom: 0;
+	}
+}
+
+.form-modal {
+	width: 60%;
+	@include breakpoint($phone) {
+		width: 100%;
+	} 
+	.input {
+		input {
+			width: 100%;
+			height: 40px;
+			margin-bottom: 1rem;
+			padding-left: 1rem;
+			outline-color: $darkred;
+			border-left: none;
+			border-top: none;
+			border-right: none;
+			border-bottom: 1px solid $darkred;
+			background-color: transparent;
+			color: darken($lightgray, 60);
+			font-family: 'Optima Cyr', 'Helvetica', sans-serif;
+			text-transform: uppercase;
+		}
+
+		textarea {
+			width: 100%;
+			margin-bottom: 1rem;
+			padding-left: 1rem;
+			padding-top: 1rem;
+			outline-color: $darkred;
+			border-left: none;
+			border-top: none;
+			border-right: none;
+			border-bottom: 1px solid $darkred;
+			background-color: transparent;
+			color: darken($lightgray, 60);
+			font-family: 'Optima Cyr', 'Helvetica', sans-serif;
+			text-transform: uppercase;
+		}
+	} 
+
+	.btn {
+		width: 100%;
+		background-color: $darkred !important;
+		cursor: pointer;
+		border: 1px solid $darkred !important;
+		color: #FFF !important;
+		margin-top: 1rem;
+	}
+}
+
+::-moz-selection {
+    text-shadow: none;
+    background: transparentize($darkred, 0.4);
+}
+
+::selection {
+    text-shadow: none;
+    background: transparentize($darkred, 0.4);
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
